@@ -104,7 +104,9 @@ class _SignInState extends State<SignIn> {
                               phonenumber: numcontroller.text)));
                 } else {
                   Get.snackbar('Invalid Number',
-                      "Write your phone number correctly e.g. +923402119211");
+                      "Write your phone number correctly e.g. +923402119211",
+                      snackPosition: SnackPosition.BOTTOM,
+                     colorText: Colors.white);
                 }
               },
               icon: Icon(

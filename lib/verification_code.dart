@@ -54,6 +54,9 @@ class _VerificationCodeState extends State<VerificationCode> {
                 fontSize: 32,
               ),
             ),
+            SizedBox(
+              height: 10,
+            ),
             Text(
               widget.phonenumber,
               style: TextStyle(
@@ -62,7 +65,7 @@ class _VerificationCodeState extends State<VerificationCode> {
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 45, right: 45, bottom: 20),
+              margin: EdgeInsets.only(left: 45, right: 45, bottom: 20,top: 80),
               child: TextField(
                 style: TextStyle(
                   color: Colors.white,
@@ -112,7 +115,9 @@ class _VerificationCodeState extends State<VerificationCode> {
                   } catch (e) {
                     FocusScope.of(context).unfocus();
                     Get.snackbar('Invalid OTP',
-                        'Input your correct OTP which you received via SMS');
+                        'Input your correct OTP which you received via SMS',
+                        snackPosition: SnackPosition.BOTTOM,
+                        colorText: Colors.white);
                   }
                 }
               },
@@ -150,22 +155,26 @@ class _VerificationCodeState extends State<VerificationCode> {
       verificationCompleted: (PhoneAuthCredential credential) async {
         auth.signInWithCredential(credential).then((value) async {
           if (value.user != null) {
-            Get.snackbar('Congratulations', 'You Signed In successfully');
+            Get.snackbar('Congratulations', 'You Signed In successfully',
+                snackPosition: SnackPosition.BOTTOM, colorText: Colors.white);
           }
         });
       },
       verificationFailed: (FirebaseAuthException e) {
         if (e.code == 'invalid-phone-number') {
           Get.snackbar(
-              'Invalid Number', 'The provided phone number is not valid');
+              'Invalid Number', 'The provided phone number is not valid',
+              snackPosition: SnackPosition.BOTTOM, colorText: Colors.white);
         }
       },
       codeSent: (String verificationId, int? resendToken) async {
         verificationCode = verificationId;
-        Get.snackbar('Code Sent', 'Verification Code has been sent to you');
+        Get.snackbar('Code Sent', 'Verification Code has been sent to you',
+            snackPosition: SnackPosition.BOTTOM, colorText: Colors.white);
       },
       codeAutoRetrievalTimeout: (String verificationId) {
-        Get.snackbar('Time Out', 'code will be sent again');
+        Get.snackbar('Time Out', 'code will be sent again',
+            snackPosition: SnackPosition.BOTTOM, colorText: Colors.white);
         verificationCode = verificationId;
       },
       timeout: Duration(seconds: 60),

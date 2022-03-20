@@ -13,7 +13,7 @@ class _HomeState extends State<Home> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/3.jpg'),
+          image: const AssetImage('images/3.jpg'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withOpacity(0.4),
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
                 bottom: MediaQuery.of(context).size.height * 0.2),
             width: double.infinity,
           ),
-          Text(
+          const Text(
             "Congrates",
             style: TextStyle(
               color: Colors.white,
@@ -38,7 +38,7 @@ class _HomeState extends State<Home> {
               fontSize: 32,
             ),
           ),
-          Text(
+          const Text(
             "You signed in successfully",
             style: TextStyle(
               color: Colors.white,

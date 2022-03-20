@@ -17,7 +17,6 @@ class _VerificationCodeState extends State<VerificationCode> {
   FirebaseAuth auth = FirebaseAuth.instance;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     verifyNumber();
   }
@@ -27,7 +26,7 @@ class _VerificationCodeState extends State<VerificationCode> {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/3.jpg'),
+          image: const AssetImage('images/3.jpg'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withOpacity(0.4),
@@ -46,7 +45,7 @@ class _VerificationCodeState extends State<VerificationCode> {
                   bottom: MediaQuery.of(context).size.height * 0.2),
               width: double.infinity,
             ),
-            Text(
+            const Text(
               "Verification Code",
               style: TextStyle(
                 color: Colors.white,
@@ -54,20 +53,20 @@ class _VerificationCodeState extends State<VerificationCode> {
                 fontSize: 32,
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
               widget.phonenumber,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Colors.white,
                 fontSize: 24,
               ),
             ),
             Container(
-              margin: EdgeInsets.only(left: 45, right: 45, bottom: 20,top: 80),
+              margin: const EdgeInsets.only(left: 45, right: 45, bottom: 20,top: 80),
               child: TextField(
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -82,17 +81,17 @@ class _VerificationCodeState extends State<VerificationCode> {
                   ),
                   fillColor: Colors.white.withOpacity(0.2),
                   filled: true,
-                  prefixIcon: Icon(
+                  prefixIcon: const Icon(
                     Icons.password,
                     color: Colors.orange,
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
                   ),
                 ),
               ),
@@ -109,7 +108,7 @@ class _VerificationCodeState extends State<VerificationCode> {
                         .then((value) async {
                       if (value.user != null) {
                         Navigator.push(context,
-                            MaterialPageRoute(builder: (context) => Home()));
+                            MaterialPageRoute(builder: (context) => const Home()));
                       }
                     });
                   } catch (e) {
@@ -121,10 +120,10 @@ class _VerificationCodeState extends State<VerificationCode> {
                   }
                 }
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock,
               ),
-              label: Text(
+              label: const Text(
                 "Sign In",
                 style: TextStyle(
                   fontSize: 18,
@@ -133,7 +132,7 @@ class _VerificationCodeState extends State<VerificationCode> {
               ),
               style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.orange,
-                side: BorderSide(color: Colors.white, width: 2),
+                side: const BorderSide(color: Colors.white, width: 2),
                 minimumSize: const Size(150, 50),
                 primary: Colors.white,
                 padding:
@@ -151,7 +150,7 @@ class _VerificationCodeState extends State<VerificationCode> {
 
   verifyNumber() async {
     await auth.verifyPhoneNumber(
-      phoneNumber: widget.phonenumber,
+      phoneNumber: '+92${widget.phonenumber}',
       verificationCompleted: (PhoneAuthCredential credential) async {
         auth.signInWithCredential(credential).then((value) async {
           if (value.user != null) {
@@ -177,7 +176,7 @@ class _VerificationCodeState extends State<VerificationCode> {
             snackPosition: SnackPosition.BOTTOM, colorText: Colors.white);
         verificationCode = verificationId;
       },
-      timeout: Duration(seconds: 60),
+      timeout: const Duration(seconds: 60),
     );
   }
 }

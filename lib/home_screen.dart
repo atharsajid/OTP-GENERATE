@@ -11,18 +11,14 @@ class SignIn extends StatefulWidget {
 
 class _SignInState extends State<SignIn> {
   TextEditingController numcontroller = TextEditingController();
-  @override
-  void initState() {
-    // TODO: implement initState
-    super.initState();
-  }
+
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage('images/3.jpg'),
+          image: const AssetImage('images/3.jpg'),
           fit: BoxFit.cover,
           colorFilter: ColorFilter.mode(
             Colors.black.withOpacity(0.4),
@@ -41,7 +37,7 @@ class _SignInState extends State<SignIn> {
                   bottom: MediaQuery.of(context).size.height * 0.2),
               width: double.infinity,
             ),
-            Text(
+            const Text(
               "OTP Generate",
               style: TextStyle(
                 color: Colors.white,
@@ -49,7 +45,7 @@ class _SignInState extends State<SignIn> {
                 fontSize: 32,
               ),
             ),
-            Text(
+            const Text(
               "Login with Phone Number",
               style: TextStyle(
                 color: Colors.white,
@@ -63,7 +59,7 @@ class _SignInState extends State<SignIn> {
                   right: 45,
                   bottom: 10),
               child: TextField(
-                style: TextStyle(
+                style: const TextStyle(
                   color: Colors.white,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
@@ -78,17 +74,25 @@ class _SignInState extends State<SignIn> {
                   ),
                   fillColor: Colors.white.withOpacity(0.2),
                   filled: true,
-                  prefixIcon: Icon(
-                    Icons.phone,
-                    color: Colors.orange,
+                  prefixIcon: Container(
+                    width:55,
+                    alignment: Alignment.center,
+                    child: const Text(
+                      '+92',
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
                   ),
                   enabledBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
                   ),
                   focusedBorder: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(18),
-                    borderSide: BorderSide(color: Colors.white, width: 2),
+                    borderSide: const BorderSide(color: Colors.white, width: 2),
                   ),
                 ),
               ),
@@ -96,7 +100,7 @@ class _SignInState extends State<SignIn> {
             OutlinedButton.icon(
               onPressed: () async {
                 if (numcontroller.text.isNotEmpty &&
-                    numcontroller.text.length == 13) {
+                    numcontroller.text.length == 10) {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
@@ -106,13 +110,13 @@ class _SignInState extends State<SignIn> {
                   Get.snackbar('Invalid Number',
                       "Write your phone number correctly e.g. +923402119211",
                       snackPosition: SnackPosition.BOTTOM,
-                     colorText: Colors.white);
+                      colorText: Colors.white);
                 }
               },
-              icon: Icon(
+              icon: const Icon(
                 Icons.lock,
               ),
-              label: Text(
+              label: const Text(
                 "Get OTP",
                 style: TextStyle(
                   fontSize: 18,
@@ -121,7 +125,7 @@ class _SignInState extends State<SignIn> {
               ),
               style: OutlinedButton.styleFrom(
                 backgroundColor: Colors.orange,
-                side: BorderSide(color: Colors.white, width: 2),
+                side: const BorderSide(color: Colors.white, width: 2),
                 minimumSize: const Size(150, 50),
                 primary: Colors.white,
                 padding:
